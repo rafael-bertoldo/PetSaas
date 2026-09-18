@@ -1,0 +1,281 @@
+/* CSS for Landing component */
+.landing {
+    min-height: 100dvh;
+    overflow: hidden;
+    background: radial-gradient( circle at 75% 15%, rgba(124, 58, 237, 0.16), transparent 35% ), var(--color-background);
+}
+
+.landing-hero {
+    position: relative;
+    min-height: 82dvh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 2rem 6rem;
+}
+
+    .landing-hero::before {
+        content: "";
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        top: -220px;
+        right: -120px;
+        border-radius: 50%;
+        background: rgba(124, 58, 237, 0.08);
+        filter: blur(80px);
+        pointer-events: none;
+    }
+
+.landing-hero-content {
+    position: relative;
+    z-index: 1;
+    width: min(1100px, 100%);
+    margin: 0 auto;
+}
+
+.landing-eyebrow {
+    display: inline-block;
+    margin-bottom: 1.25rem;
+    color: var(--color-primary-soft);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.landing-hero h1 {
+    max-width: 850px;
+    margin: 0;
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+}
+
+    .landing-hero h1 span {
+        display: block;
+        color: var(--color-primary-soft);
+    }
+
+.landing-hero p {
+    max-width: 680px;
+    margin: 2rem 0 0;
+    color: var(--color-text-muted);
+    font-size: 1.15rem;
+    line-height: 1.7;
+}
+
+.landing-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2.5rem;
+}
+
+.landing-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: transform 160ms ease, background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+    .landing-button:hover {
+        transform: translateY(-2px);
+    }
+
+.landing-button-primary {
+    background: var(--color-primary);
+    color: white;
+    box-shadow: 0 8px 24px rgba(124, 58, 237, 0.25);
+}
+
+    .landing-button-primary:hover {
+        background: var(--color-primary-hover);
+        box-shadow: 0 12px 30px rgba(124, 58, 237, 0.35);
+    }
+
+.landing-button-secondary {
+    border-color: var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text);
+}
+
+    .landing-button-secondary:hover {
+        border-color: var(--color-primary);
+        background: var(--color-surface-elevated);
+    }
+
+.landing-features {
+    width: min(1100px, 100%);
+    margin: 0 auto;
+    padding: 7rem 2rem;
+}
+
+.landing-section-header {
+    max-width: 700px;
+    margin-bottom: 3.5rem;
+}
+
+    .landing-section-header h2 {
+        margin: 0;
+        font-size: clamp(2.25rem, 5vw, 4rem);
+        line-height: 1;
+        letter-spacing: -0.045em;
+    }
+
+        .landing-section-header h2 span {
+            color: var(--color-primary-soft);
+        }
+
+.landing-feature-card {
+    position: relative;
+    min-height: 220px;
+    padding: 2rem;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+    .landing-feature-card::before {
+        content: "";
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        top: -100px;
+        right: -80px;
+        border-radius: 50%;
+        background: rgba(124, 58, 237, 0.12);
+        filter: blur(45px);
+        opacity: 0;
+        transition: opacity 180ms ease;
+        pointer-events: none;
+    }
+
+    .landing-feature-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(124, 58, 237, 0.45);
+        background: var(--color-surface-elevated);
+        box-shadow: var(--shadow-md);
+    }
+
+        .landing-feature-card:hover::before {
+            opacity: 1;
+        }
+
+    .landing-feature-card h3 {
+        position: relative;
+        margin: 0;
+        font-size: 1.35rem;
+        letter-spacing: -0.02em;
+    }
+
+    .landing-feature-card p {
+        position: relative;
+        max-width: 480px;
+        margin: 1rem 0 0;
+        color: var(--color-text-muted);
+        line-height: 1.7;
+    }
+
+.landing-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+@media (max-width: 768px) {
+    .landing-features {
+        padding: 5rem 1.25rem;
+    }
+
+    .landing-feature-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.landing-how-it-works {
+    width: min(1100px, 100%);
+    margin: 0 auto;
+    padding: 7rem 2rem;
+}
+
+.landing-steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.landing-step {
+    position: relative;
+    padding: 2rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+}
+
+.landing-step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--color-primary-soft);
+}
+
+.landing-step h3 {
+    margin: 0 0 0.75rem;
+    font-size: 1.25rem;
+}
+
+.landing-step p {
+    margin: 0;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+}
+
+.landing-cta {
+    padding: 8rem 2rem;
+    text-align: center;
+    border-top: 1px solid var(--color-border);
+    background: radial-gradient( circle at 50% 100%, rgba(124, 58, 237, 0.14), transparent 45% ), var(--color-background);
+}
+
+    .landing-cta > div {
+        width: min(700px, 100%);
+        margin: 0 auto;
+    }
+
+    .landing-cta h2 {
+        margin: 1rem 0 2rem;
+        font-size: clamp(2.25rem, 5vw, 4rem);
+        line-height: 1;
+        letter-spacing: -0.045em;
+    }
+
+        .landing-cta h2 span {
+            display: block;
+            color: var(--color-primary-soft);
+        }
+
+@media (max-width: 768px) {
+    .landing-how-it-works {
+        padding: 5rem 1.25rem;
+    }
+
+    .landing-steps {
+        grid-template-columns: 1fr;
+    }
+
+    .landing-cta {
+        padding: 6rem 1.25rem;
+    }
+}

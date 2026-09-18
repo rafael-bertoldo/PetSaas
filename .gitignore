@@ -1,0 +1,47 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build
+[Bb]in/
+[Oo]bj/
+
+# Test results
+TestResults/
+*.trx
+
+# Code coverage
+coverage/
+*.coverage
+*.coveragexml
+
+# Rider / ReSharper
+.idea/
+_ReSharper*/
+*.DotSettings.user
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Local environment
+.env
+.env.*
+!.env.example
+
+# ASP.NET / local development
+appsettings.Local.json
+appsettings.Development.Local.json
+
+# Node
+node_modules/
+
+# Publish
+publish/
+wwwroot/lib/

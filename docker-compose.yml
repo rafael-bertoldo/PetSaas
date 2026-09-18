@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: petsaas-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: petsaas
+      POSTGRES_USER: petsaas
+      POSTGRES_PASSWORD: petsaas
+    ports:
+      - "5432:5432"
+    volumes:
+      - petsaas-postgres-data:/var/lib/postgresql/data
+
+volumes:
+  petsaas-postgres-data:
