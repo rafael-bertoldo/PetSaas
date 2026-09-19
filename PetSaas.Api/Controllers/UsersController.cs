@@ -47,7 +47,7 @@ namespace PetSaas.Api.Controllers
                 user);
         }
 
-        [HttpGet]
+        [HttpGet("by-email")]
         public async Task<IActionResult> GetByEmail(
             string email,
             CancellationToken cancellationToken = default)
