@@ -5,5 +5,4 @@
   <Project Path="PetSaas.Infrastructure/PetSaas.Infrastructure.csproj" />
   <Project Path="PetSaas.IntegrationTests/PetSaas.IntegrationTests.csproj" />
   <Project Path="PetSaas.UnitTests/PetSaas.UnitTests.csproj" />
-  <Project Path="PetSaas.Web/PetSaas.Web.csproj" Id="031d4cc0-c1bb-4eb7-9356-bb2fd7cd13b5" />
 </Solution>
