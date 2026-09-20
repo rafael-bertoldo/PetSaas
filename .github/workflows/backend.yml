@@ -1,0 +1,59 @@
+name: Backend CI/CD
+
+on:
+  pull_request:
+    paths:
+      - "PetSaas.Api/**"
+      - "PetSaas.Application/**"
+      - "PetSaas.Domain/**"
+      - "PetSaas.Infrastructure/**"
+      - "PetSaas.UnitTests/**"
+      - "PetSaas.IntegrationTests/**"
+      - "PetSaas.slnx"
+      - ".github/workflows/backend.yml"
+
+  push:
+    branches:
+      - main
+    paths:
+      - "PetSaas.Api/**"
+      - "PetSaas.Application/**"
+      - "PetSaas.Domain/**"
+      - "PetSaas.Infrastructure/**"
+      - "PetSaas.UnitTests/**"
+      - "PetSaas.IntegrationTests/**"
+      - "PetSaas.slnx"
+      - ".github/workflows/backend.yml"
+
+jobs:
+  ci:
+    name: Build and test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Restore
+        run: dotnet restore PetSaas.slnx
+
+      - name: Build
+        run: dotnet build PetSaas.slnx --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet test PetSaas.slnx --configuration Release --no-build
+
+  deploy:
+    needs: ci
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy API to Render
+        run: curl -fsS -X POST "${{ secrets.RENDER_BACKEND_DEPLOY_HOOK_URL }}"

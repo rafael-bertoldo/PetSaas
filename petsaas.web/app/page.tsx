@@ -1,8 +1,17 @@
+import { Features } from "../components/landing/Features";
+import { FinalCta } from "../components/landing/FinalCta";
+import { Hero } from "../components/landing/Hero";
+import { HowItWorks } from "../components/landing/HowItWorks";
+import { Navbar } from "../components/landing/Navbar";
+
 export default function Home() {
   return (
-    <main>
-      <h1>SisBixo</h1>
-      <p>Gestão inteligente para negócios pet.</p>
+    <main className="min-h-screen bg-zinc-950 text-white">
+      <Navbar />
+      <Hero />
+      <Features />
+      <HowItWorks />
+      <FinalCta />
     </main>
-  )
+  );
 }
