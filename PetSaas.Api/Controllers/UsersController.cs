@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using PetSaas.Application.DTOs.Users;
 using PetSaas.Application.Interfaces;
 
@@ -15,8 +16,9 @@ namespace PetSaas.Api.Controllers
             _userService = userService;
         }
 
+        [Authorize]
         [HttpGet("{id:guid}")]
-        public async Task<IActionResult> GetByid(
+        public async Task<IActionResult> GetById(
             Guid id,
             CancellationToken cancellationToken)
         {
@@ -42,7 +44,7 @@ namespace PetSaas.Api.Controllers
                 cancellationToken);
 
             return CreatedAtAction(
-                nameof(GetByid),
+                nameof(GetById),
                 new { id = user.Id },
                 user);
         }

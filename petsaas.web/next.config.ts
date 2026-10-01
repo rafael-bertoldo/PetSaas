@@ -7,8 +7,8 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
-        source: "/api/:path",
-        destination: `${process.env.PETSAAS_API_URL}/api/:path`
+        source: "/api/:path*",
+        destination: `${process.env.PETSAAS_API_URL}/api/:path*`
       }
     ]
   }

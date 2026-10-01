@@ -7,8 +7,19 @@ export interface CreateUserRequest {
     lastName: string
 }
 
+export interface UserResponse {
+    id: string
+    email: string
+    firstName: string
+    lastName: string
+    active: boolean
+    lastLoginAt: string | null
+    createdAt: string
+    updatedAt: string
+}
+
 export async function createUser(request: CreateUserRequest) {
-    const response = await api.post("/users", request)
+    const response = await api.post<UserResponse>("/users", request)
 
     return response.data
 }

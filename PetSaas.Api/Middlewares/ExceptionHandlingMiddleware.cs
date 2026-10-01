@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
+using PetSaas.Application.Exceptions;
 
 namespace PetSaas.Api.Middlewares
 {
@@ -52,6 +53,14 @@ namespace PetSaas.Api.Middlewares
                 }
 
                 throw;
+            }
+            catch (InvalidCredentialsException exception)
+            {
+                context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                await context.Response.WriteAsJsonAsync(new
+                {
+                    error = exception.Message
+                });
             }
         }
     }
