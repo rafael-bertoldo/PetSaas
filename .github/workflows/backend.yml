@@ -140,10 +140,12 @@ jobs:
         run: chmod +x ./artifacts/efbundle
 
       - name: Apply production migrations
+        env:
+          ConnectionStrings__DefaultConnection: ${{ secrets.DATABASE_CONNECTION_STRING }}
+          ASPNETCORE_ENVIRONMENT: Production
         run: |
-          ASPNETCORE_ENVIRONMENT=Production \
           ./artifacts/efbundle \
-            --connection "${{ secrets.DATABASE_CONNECTION_STRING }}"
+            --connection "$ConnectionStrings__DefaultConnection"
 
       - name: Deploy API to Render
         run: >
