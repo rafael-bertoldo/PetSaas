@@ -45,3 +45,6 @@ node_modules/
 # Publish
 publish/
 wwwroot/lib/
+
+# Artifacts
+artifacts/

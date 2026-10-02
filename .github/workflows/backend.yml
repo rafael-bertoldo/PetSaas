@@ -121,6 +121,8 @@ jobs:
         run: dotnet restore PetSaas.slnx
 
       - name: Build migration bundle
+        env:
+          ConnectionsStrings__DefaultConnection: "Host=localhost;Port=5432;Database=ef_design_time;Username=postgres;Password=postgres"
         run: |
           mkdir -p artifacts
 
