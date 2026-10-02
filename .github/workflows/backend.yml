@@ -122,11 +122,10 @@ jobs:
         run: dotnet restore PetSaas.slnx
 
       - name: Build migration bundle
-        env:
-          ConnectionStrings__DefaultConnection: "Host=localhost;Port=5432;Database=ef_design_time;Username=postgres;Password=postgres"
         run: |
           mkdir -p artifacts
-
+          
+          ConnectionStrings__DefaultConnection: "Host=localhost;Port=5432;Database=ef_design_time;Username=postgres;Password=postgres"
           ASPNETCORE_ENVIRONMENT=Production \
           dotnet ef migrations bundle \
             --self-contained \
