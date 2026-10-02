@@ -80,11 +80,12 @@ jobs:
         run: dotnet restore PetSaas.slnx
 
       - name: Apply migrations
+        env:
+          ConnectionStrings__DefaultConnection: ${{ secrets.DATABASE_CONNECTION_STRING }}
         run: >
-          dotnet ef database update
-          --project PetSaas.Infrastructure
-          --startup-project PetSaas.Api
-          --connection "${{ secrets.DATABASE_CONNECTION_STRING }}"
+          dotnet ef database update \
+            --project PetSaas.Infrastructure \
+            --startup-project PetSaas.Api
 
       - name: Deploy API to Render
         run: >
