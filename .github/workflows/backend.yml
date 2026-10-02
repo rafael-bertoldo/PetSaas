@@ -90,3 +90,58 @@ jobs:
         run: >
           curl -fsS -X POST
           "${{ secrets.RENDER_BACKEND_DEPLOY_HOOK_URL }}"
+
+  deploy-production:
+    name: Migrate and deploy production
+    needs: ci
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    runs-on: ubuntu-latest
+
+    environment:
+      name: production
+
+    concurrency:
+      group: production-deploy
+      cancel-in-progress: false
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Install EF Core tools
+        run: dotnet tool install --global dotnet-ef --version 10.0.12
+
+      - name: Restore
+        run: dotnet restore PetSaas.slnx
+
+      - name: Build migration bundle
+        run: |
+          mkdir -p artifacts
+
+          ASPNETCORE_ENVIRONMENT=Production \
+          dotnet ef migrations bundle \
+            --self-contained \
+            --target-runtime linux-x64 \
+            --project PetSaas.Infrastructure \
+            --startup-project PetSaas.Api \
+            --output ./artifacts/efbundle
+
+      - name: Make migration bundle executable
+        run: chmod +x ./artifacts/efbundle
+
+      - name: Apply production migrations
+        run: |
+          ASPNETCORE_ENVIRONMENT=Production \
+          ./artifacts/efbundle \
+            --connection "${{ secrets.DATABASE_CONNECTION_STRING }}"
+
+      - name: Deploy API to Render
+        run: >
+          curl -fsS -X POST
+          "${{ secrets.RENDER_BACKEND_DEPLOY_HOOK_URL }}"
