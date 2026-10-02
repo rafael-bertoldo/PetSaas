@@ -87,7 +87,7 @@ export function RegisterForm() {
     return (
         <form
             onSubmit={handleSubmit(onSubmit)}
-            className="space-y-5"
+            className="space-y-6"
         >
             <div className="grid gap-5 sm:grid-cols-2">
                 <div>
@@ -102,7 +102,7 @@ export function RegisterForm() {
                         id="firstName"
                         type="text"
                         {...register("firstName")}
-                        className="w-full rounded-xl border border-zinc-800 bg-zinc-900 px-4 py-3 text-white outline-none transition placeholder:text-zinc-600 focus:border-purple-500"
+                        className="h-11 w-full rounded-xl border border-zinc-800 bg-zinc-950 px-4 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20"
                         placeholder="Seu nome"
                     />
 
@@ -125,7 +125,7 @@ export function RegisterForm() {
                         id="lastName"
                         type="text"
                         {...register("lastName")}
-                        className="w-full rounded-xl border border-zinc-800 bg-zinc-900 px-4 py-3 text-white outline-none transition placeholder:text-zinc-600 focus:border-purple-500"
+                        className="h-11 w-full rounded-xl border border-zinc-800 bg-zinc-950 px-4 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20"
                         placeholder="Seu sobrenome"
                     />
 
@@ -149,7 +149,7 @@ export function RegisterForm() {
                     id="email"
                     type="email"
                     {...register("email")}
-                    className="w-full rounded-xl border border-zinc-800 bg-zinc-900 px-4 py-3 text-white outline-none transition placeholder:text-zinc-600 focus:border-purple-500"
+                    className="h-11 w-full rounded-xl border border-zinc-800 bg-zinc-950 px-4 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20"
                     placeholder="voce@exemplo.com"
                 />
 
@@ -172,7 +172,7 @@ export function RegisterForm() {
                     id="password"
                     type="password"
                     {...register("password")}
-                    className="w-full rounded-xl border border-zinc-800 bg-zinc-900 px-4 py-3 text-white outline-none transition placeholder:text-zinc-600 focus:border-purple-500"
+                    className="h-11 w-full rounded-xl border border-zinc-800 bg-zinc-950 px-4 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20"
                     placeholder="Sua senha"
                 />
 
@@ -200,7 +200,7 @@ export function RegisterForm() {
                     id="confirmPassword"
                     type="password"
                     {...register("confirmPassword")}
-                    className="w-full rounded-xl border border-zinc-800 bg-zinc-900 px-4 py-3 text-white outline-none transition placeholder:text-zinc-600 focus:border-purple-500"
+                    className="h-11 w-full rounded-xl border border-zinc-800 bg-zinc-950 px-4 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20"
                     placeholder="Repita sua senha"
                 />
 
@@ -214,7 +214,7 @@ export function RegisterForm() {
             <button
                 type="submit"
                 disabled={mutation.isPending}
-                className="w-full cursor-pointer rounded-xl bg-purple-600 px-6 py-3 font-medium text-white transition hover:bg-purple-500 disabled:cursor-not-allowed disabled:opacity-60"
+                className="h-11 w-full cursor-pointer rounded-xl bg-purple-600 px-6 text-sm font-semibold text-white transition hover:bg-purple-500 disabled:cursor-not-allowed disabled:opacity-60"
             >
                 {mutation.isPending ? "Criando conta..." : "Criar conta"}
             </button>

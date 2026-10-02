@@ -1,26 +1,26 @@
 import Link from "next/link";
 
 import { AuthLayout } from "@/components/auth/AuthLayout";
-import { RegisterForm } from "@/components/auth/RegisterForm";
+import { LoginForm } from "@/components/auth/LoginForm";
 
-export default function RegisterPage() {
+export default function LoginPage() {
   return (
     <AuthLayout
-      title="Criar sua conta"
-      description="Comece a gerenciar seu negócio com o SisBixo."
+      title="Entrar na sua conta"
+      description="Acesse o SisBixo e continue gerenciando seu negócio."
       footer={
         <>
-          Já tem uma conta?{" "}
+          Ainda não tem uma conta?{" "}
           <Link
-            href="/login"
+            href="/register"
             className="font-medium text-purple-400 transition hover:text-purple-300"
           >
-            Entrar
+            Criar conta
           </Link>
         </>
       }
     >
-      <RegisterForm />
+      <LoginForm />
     </AuthLayout>
   );
 }
